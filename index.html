@@ -4,38 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Ortho DS - Ortodoncia y Estética Dental en Coatepec. Tu mejor sonrisa comienza aquí.">
-    <title>Ortho DS | Ortodoncia y Estética Dental</title>
+    <meta name="description" content="Ortho DS - Ortodoncia y Estética Dental Premium.">
+    <title>Ortho DS | Sonrisas que Transforman</title>
 
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Font Awesome for Icons (Optional but recommended for social/contact icons) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
 
-    <!-- Sticky Navbar -->
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-logo">Ortho DS</div>
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="container navbar-container">
             <a href="#" class="logo">Ortho DS</a>
-
-            <button class="menu-toggle" aria-label="Abrir menú">
-                <i class="fas fa-bars"></i>
-            </button>
-
+            <button class="menu-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
             <div class="nav-menu">
                 <ul class="nav-list">
                     <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#filosofia" class="nav-link">Filosofía</a></li>
                     <li><a href="#servicios" class="nav-link">Servicios</a></li>
-                    <li><a href="#doctora" class="nav-link">Dra. [Nombre]</a></li>
                     <li><a href="#ubicacion" class="nav-link">Ubicación</a></li>
                 </ul>
                 <a href="#contacto" class="btn btn-primary nav-cta">Agendar Cita</a>
@@ -43,161 +50,89 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Canvas -->
     <header id="inicio" class="hero">
+        <canvas id="hero-canvas"></canvas>
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1 class="hero-headline">Tu Mejor Sonrisa Comienza Aquí en Coatepec</h1>
-            <p class="hero-subheadline">Ortodoncia y Estética Dental en Loma del Suchil. Tecnología moderna con un trato
-                cálido y humano.</p>
-            <a href="https://wa.me/525660016169" target="_blank" class="btn btn-whatsapp-hero">
-                <i class="fab fa-whatsapp"></i> Agendar por WhatsApp
+            <h1 class="hero-headline">Tu Mejor Sonrisa Comienza Aquí</h1>
+            <p class="hero-subheadline">Ortodoncia y Estética Dental en Coatepec. Tecnología avanzada con trato humano.
+            </p>
+            <a href="https://wa.me/525660016169" target="_blank" class="btn btn-primary">
+                <i class="fab fa-whatsapp"></i> Reserva tu Cita
             </a>
         </div>
     </header>
 
-    <!-- Meet the Doctor Section -->
-    <section id="doctora" class="section doctor-section">
+    <!-- Philosophy / Doctor -->
+    <section id="filosofia" class="section">
         <div class="container doctor-grid">
             <div class="doctor-info">
-                <span class="eyebrow">Conoce a tu Doctora</span>
-                <h2 class="section-title">Más que una dentista, tu aliada en salud</h2>
-                <p class="doctor-bio">
-                    Con años de experiencia transformando sonrisas, me dedico a ofrecer tratamientos personalizados que
-                    combinan la precisión clínica con una atención empática. Mi compromiso es que te sientas cómodo y
-                    seguro en cada visita, logrando resultados que no solo mejoran tu estética, sino también tu calidad
-                    de vida.
-                </p>
-                <p>
-                    Especialista en ortodoncia avanzada y estética dental, manteniéndome siempre a la vanguardia con las
-                    últimas tecnologías y técnicas mínimamente invasivas.
-                </p>
+                <span class="eyebrow">Nuestra Filosofía</span>
+                <h2 class="section-title">Precisión Científica, Arte Dental</h2>
+                <p class="doctor-bio">En Ortho DS, creemos que cada sonrisa es una obra de arte única. Fusionamos la
+                    última tecnología en ortodoncia digital con un enfoque estético minucioso.</p>
+                <p>Nuestra misión es brindarte no solo salud dental, sino la confianza de sonreír sin reservas.</p>
             </div>
+            <!-- Standard Image Placeholder - User can replace -->
             <div class="doctor-image-wrapper">
-                <!-- Placeholder for Doctor's Photo -->
                 <div class="doctor-placeholder">
                     <i class="fas fa-user-md"></i>
-                    <span>Foto Doctora</span>
+                    <span>Dra. Especialista</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="servicios" class="section services-section bg-light">
+    <!-- Services -->
+    <section id="servicios" class="section bg-light">
         <div class="container">
-            <div class="section-header text-center">
-                <h2 class="section-title">Nuestros Servicios</h2>
-                <p class="section-subtitle">Tratamientos integrales diseñados para ti</p>
+            <div class="text-center">
+                <span class="eyebrow">Tratamientos</span>
+                <h2 class="section-title">Excelencia en Cada Detalle</h2>
+                <p class="section-subtitle">Soluciones personalizadas para tu salud bucal</p>
             </div>
-
             <div class="services-grid">
-                <!-- Card 1 -->
                 <article class="service-card">
                     <div class="icon-box">🦷</div>
-                    <h3>Ortodoncia</h3>
-                    <p>Alineación precisa para una sonrisa funcional y estética. Opción de brackets metálicos y
-                        estéticos.</p>
+                    <h3>Ortodoncia Invisible</h3>
+                    <p>Alineación discreta y efectiva con la tecnología más avanzada.</p>
                 </article>
-
-                <!-- Card 2 -->
                 <article class="service-card">
                     <div class="icon-box">✨</div>
-                    <h3>Blanqueamiento</h3>
-                    <p>Recupera el brillo natural de tus dientes sin sensibilidad y con resultados visibles inmediatos.
-                    </p>
+                    <h3>Diseño de Sonrisa</h3>
+                    <p>Carillas y blanqueamiento para una estética impecable.</p>
                 </article>
-
-                <!-- Card 3 -->
                 <article class="service-card">
                     <div class="icon-box">🛡️</div>
-                    <h3>Limpiezas</h3>
-                    <p>Profilaxis profunda y suave que elimina sarro y manchas, previniendo enfermedades futuras.</p>
-                </article>
-
-                <!-- Card 4 -->
-                <article class="service-card">
-                    <div class="icon-box">🩺</div>
-                    <h3>Odontología General</h3>
-                    <p>Cuidado integral restaurativo, desde resinas estéticas hasta extracciones seguras.</p>
+                    <h3>Salud Integral</h3>
+                    <p>Limpiezas profundas y prevención para toda la familia.</p>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section testimonials-section">
-        <div class="container">
-            <h2 class="section-title text-center">Lo que dicen nuestros pacientes</h2>
-
-            <div class="testimonials-grid">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"La atención es excelente. Me explicaron cada paso de mi tratamiento de
-                        ortodoncia y los resultados han sido maravillosos. ¡Recomendadísimo!"</p>
-                    <p class="testimonial-author">- María G.</p>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Llevé a mi hijo y el trato fue increíblemente paciente y amable. Ya no
-                        tiene miedo de ir al dentista. Muy profesionales."</p>
-                    <p class="testimonial-author">- Carlos R.</p>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Me hice un blanqueamiento y quedé fascinada. El consultorio está
-                        impecable y la doctora es muy atenta."</p>
-                    <p class="testimonial-author">- Ana P.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Location & Contact Section -->
-    <section id="ubicacion" class="section location-section">
+    <!-- Location -->
+    <section id="ubicacion" class="section">
         <div class="container location-grid">
-            <!-- Contact Info -->
             <div class="contact-info">
                 <span class="eyebrow">Visítanos</span>
-                <h2 class="section-title">Tu clínica en Coatepec</h2>
-
+                <h2 class="section-title">Tu Clínica en Coatepec</h2>
                 <ul class="contact-details">
                     <li>
                         <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <strong>Dirección:</strong>
-                            <p>Melchor Ocampo #175,<br>Loma del Suchil, Coatepec</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="far fa-clock"></i>
-                        <div>
-                            <strong>Horario:</strong>
-                            <p>Lun - Sáb: 9:00 AM - 8:00 PM</p>
-                        </div>
+                        <div><strong>Dirección:</strong> Melchor Ocampo #175, Loma del Suchil</div>
                     </li>
                     <li>
                         <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <strong>Teléfono:</strong>
-                            <p><a href="tel:5660016169">56 6001 6169</a></p>
-                        </div>
+                        <div><strong>Teléfono:</strong> <a href="tel:5660016169">56 6001 6169</a></div>
                     </li>
                 </ul>
             </div>
-
-            <!-- Map -->
             <div class="map-container">
                 <iframe
                     src="https://maps.google.com/maps?q=Melchor+Ocampo+175,+Loma+del+Suchil,+Coatepec,+Veracruz&output=embed"
-                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                    title="Ubicación Ortho DS">
-                </iframe>
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
@@ -205,34 +140,119 @@
     <!-- Footer -->
     <footer id="contacto" class="footer">
         <div class="container footer-content">
-            <div class="footer-left">
-                <span class="footer-logo">Ortho DS</span>
-                <p>Cuidando tu sonrisa con pasión y tecnología.</p>
-            </div>
+            <span class="footer-logo">Ortho DS</span>
             <div class="footer-links">
-                <a href="politicas.html">Políticas de Privacidad</a>
+                <a href="politicas.html">Aviso de Privacidad</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Ortho DS. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Ortho DS.</p>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/525660016169" target="_blank" class="float-whatsapp" aria-label="Contactar por WhatsApp">
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/525660016169" target="_blank" class="float-whatsapp" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Simple Script for Mobile Menu -->
+    <!-- Scripts -->
     <script>
-        document.querySelector('.menu-toggle').addEventListener('click', function () {
-            document.querySelector('.nav-menu').classList.toggle('active');
+        // Loader
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                setTimeout(() => loader.style.display = 'none', 500);
+            }, 1000);
         });
 
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-menu').classList.remove('active');
+        // Mobile Menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => navMenu.classList.remove('active')));
+
+        // GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        const canvas = document.getElementById("hero-canvas");
+        const context = canvas.getContext("2d");
+
+        // Set canvas dimensions to match window (responsive-ish)
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            render(); // Redraw on resize
+        });
+
+        const frameCount = 148; // Updated estimate for a smooth sequence
+        const currentFrame = index => (
+            `assets/sequence/frame_${(index + 1).toString().padStart(3, '0')}.webp`
+        );
+
+        const images = [];
+        const seq = { frame: 0 };
+
+        for (let i = 0; i < frameCount; i++) {
+            const img = new Image();
+            img.src = currentFrame(i);
+            images.push(img);
+        }
+
+        gsap.to(seq, {
+            frame: frameCount - 1,
+            snap: "frame",
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top top",
+                end: "+=3000", // Pin for 3000px of scroll
+                scrub: 0.5,
+                pin: true,
+                anticipatePin: 1
+            },
+            onUpdate: render
+        });
+
+        images[0].onload = render;
+
+        function render() {
+            // Draw Image Scale-to-Cover Logic
+            const img = images[seq.frame];
+            if (img) {
+                // Calculate scaling to cover the canvas
+                const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+                const x = (canvas.width / 2) - (img.width / 2) * scale;
+                const y = (canvas.height / 2) - (img.height / 2) * scale;
+
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(img, x, y, img.width * scale, img.height * scale);
+            }
+        }
+
+        // Hero Text Animation
+        gsap.from(".hero-content", {
+            y: 50,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power3.out",
+            delay: 0.5
+        });
+
+        // Staggered Fade In for Sections
+        gsap.utils.toArray('.section').forEach(section => {
+            gsap.from(section.children, {
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.2,
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                }
             });
         });
     </script>
