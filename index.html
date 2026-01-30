@@ -178,15 +178,24 @@
         const canvas = document.getElementById("hero-canvas");
         const context = canvas.getContext("2d");
 
-        // Set canvas dimensions to match window (responsive-ish)
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // High DPI Canvas Handling
+        function resizeCanvas() {
+            const dpr = window.devicePixelRatio || 1;
+            // Set the canvas size in pixels (buffer)
+            canvas.width = window.innerWidth * dpr;
+            canvas.height = window.innerHeight * dpr;
 
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            render(); // Redraw on resize
-        });
+            // Set the CSS size (display size) explicitly if needed, but width:100% in CSS usually handles it.
+            // Be consistent with logical pixels in drawing operations:
+            context.scale(dpr, dpr);
+
+            render();
+        }
+
+        // Initial set
+        resizeCanvas();
+
+        window.addEventListener('resize', resizeCanvas);
 
         const frameCount = 192; // Updated to match extracted frames from Unidad Dental.webp
         const currentFrame = index => (
@@ -223,12 +232,21 @@
             // Draw Image Scale-to-Cover Logic
             const img = images[seq.frame];
             if (img) {
-                // Calculate scaling to cover the canvas
-                const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
-                const x = (canvas.width / 2) - (img.width / 2) * scale;
-                const y = (canvas.height / 2) - (img.height / 2) * scale;
+                // Use logical dimensions (window) for calculations
+                const winW = window.innerWidth;
+                const winH = window.innerHeight;
 
-                context.clearRect(0, 0, canvas.width, canvas.height);
+                // Calculate scaling to cover the viewport
+                const scale = Math.max(winW / img.width, winH / img.height);
+
+                // Center the image
+                const x = (winW / 2) - (img.width / 2) * scale;
+                const y = (winH / 2) - (img.height / 2) * scale;
+
+                // Clear using logical dimensions
+                context.clearRect(0, 0, winW, winH);
+
+                // Draw
                 context.drawImage(img, x, y, img.width * scale, img.height * scale);
             }
         }

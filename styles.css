@@ -268,13 +268,12 @@ body {
 /* The Canvas replaces the background image */
 #hero-canvas {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
     object-fit: cover;
-    /* Fallback logic needed in JS usually */
     z-index: 1;
 }
 
