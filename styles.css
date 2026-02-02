@@ -1,93 +1,18 @@
-:root {
-    --bg-color: #f8f9fa;
-    --text-color: #212529;
-    --accent-color: #25D366;
-    /* WhatsApp Green */
-    --accent-hover: #128C7E;
-    --font-family: 'Outfit', sans-serif;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: var(--font-family);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.container {
-    width: 100%;
-    padding: 20px;
-    max-width: 600px;
-}
-
-.content {
-    background: white;
-    padding: 3rem 2rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
-}
-
-.content:hover {
-    transform: translateY(-5px);
-}
-
-.title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #1a1a1a;
-    letter-spacing: -0.02em;
-}
-
-.subtitle {
-    font-size: 1.125rem;
-    color: #666;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-}
-
-.cta-button {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: white;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1.125rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-}
-
-.cta-button:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-}
-
-.cta-button:active {
-    transform: translateY(0);
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 480px) {
-    .title {
-        font-size: 2rem;
+/* Custom styles to complement Tailwind */
+@layer utilities {
+    .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
     }
 
-    .content {
-        padding: 2rem 1.5rem;
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }
