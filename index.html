@@ -22,11 +22,28 @@
                     },
                     colors: {
                         brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            900: '#1e3a8a',
+                            50: '#e6f7f8',
+                            100: '#cceff1',
+                            200: '#99dfe3',
+                            300: '#66cfd5',
+                            400: '#33bfc7',
+                            500: '#2A9CA6',
+                            600: '#228085',
+                            700: '#1a6064',
+                            800: '#114043',
+                            900: '#092021',
+                        },
+                        accent: {
+                            50: '#f8f3fb',
+                            100: '#f1e7f7',
+                            200: '#e3cfef',
+                            300: '#d5b7e7',
+                            400: '#c79fdf',
+                            500: '#AC76CB',
+                            600: '#8a5ea2',
+                            700: '#67477a',
+                            800: '#452f51',
+                            900: '#221829',
                         }
                     }
                 }
@@ -35,7 +52,7 @@
     </script>
     <style>
         :root {
-            --brand-pink: #ec4899;
+            --accent-color: #AC76CB;
         }
 
         @keyframes type-cycle {
@@ -66,8 +83,8 @@
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
-            border-right: 4px solid var(--brand-pink);
-            color: var(--brand-pink);
+            border-right: 4px solid var(--accent-color);
+            color: var(--accent-color);
             width: 0;
             vertical-align: bottom;
             animation: type-cycle 6s steps(10) infinite, blink-caret .75s step-end infinite;
@@ -83,20 +100,22 @@
         id="header">
         <div class="container mx-auto px-6 h-20 flex items-center justify-between">
             <!-- Logo -->
-            <a href="#" class="text-2xl font-bold tracking-tight text-brand-900 group">
-                Ortho <span class="text-brand-600 group-hover:text-brand-500 transition-colors">DS</span>
+            <a href="index.html" class="group">
+                <img src="assets/images/logo-orthods.png" alt="Logotipo Ortho DS" class="h-12 w-auto">
             </a>
 
             <!-- Desktop Nav -->
             <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
                 <a href="#servicios" class="hover:text-brand-600 transition-colors">Tratamientos</a>
                 <a href="#dra" class="hover:text-brand-600 transition-colors">Dra. Dalia</a>
+                <a href="casos.html" class="hover:text-brand-600 transition-colors">Casos de Éxito</a>
+                <a href="promociones.html" class="hover:text-brand-600 transition-colors">Promociones</a>
                 <a href="#ubicacion" class="hover:text-brand-600 transition-colors">Ubicación</a>
             </nav>
 
             <!-- CTA Button -->
             <a href="https://wa.me/5215660016169" target="_blank"
-                class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 bg-brand-600 rounded-full hover:bg-brand-500 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-600">
+                class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 bg-accent-500 rounded-full hover:bg-accent-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500">
                 Agendar Cita por WhatsApp
             </a>
 
@@ -126,7 +145,7 @@
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                         <a href="https://wa.me/5215660016169" target="_blank"
-                            class="w-full sm:w-auto px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-brand-600 rounded-2xl hover:bg-brand-500 hover:shadow-xl hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-600">
+                            class="w-full sm:w-auto px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-accent-500 rounded-2xl hover:bg-accent-600 hover:shadow-xl hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500">
                             Agendar Cita por WhatsApp
                         </a>
                         <a href="#servicios"
@@ -336,7 +355,7 @@
 
             <div class="mt-16 text-center">
                 <a href="https://wa.me/5215660016169" target="_blank"
-                    class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-slate-900 rounded-full hover:bg-slate-800 hover:shadow-lg">
+                    class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-accent-600 rounded-full hover:bg-accent-500 hover:shadow-lg">
                     Agendar Cita por WhatsApp
                 </a>
             </div>
@@ -440,7 +459,7 @@
 
             <div class="mt-12">
                 <a href="https://wa.me/5215660016169" target="_blank"
-                    class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-brand-600 rounded-full hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-500/20">
+                    class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-accent-500 rounded-full hover:bg-accent-600 hover:shadow-lg hover:shadow-accent-500/20">
                     Agendar Cita por WhatsApp
                 </a>
             </div>
@@ -482,6 +501,8 @@
                 <div class="flex gap-6 text-sm font-medium">
                     <a href="#" class="hover:text-white transition-colors">Inicio</a>
                     <a href="#servicios" class="hover:text-white transition-colors">Servicios</a>
+                    <a href="casos.html" class="hover:text-white transition-colors">Casos de Éxito</a>
+                    <a href="promociones.html" class="hover:text-white transition-colors">Promociones</a>
                     <a href="#ubicacion" class="hover:text-white transition-colors">Ubicación</a>
                 </div>
             </div>

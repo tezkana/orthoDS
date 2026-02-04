@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promociones | Ortho DS - Sonrisas al Mejor Precio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#e6f7f8',
+                            100: '#cceff1',
+                            200: '#99dfe3',
+                            300: '#66cfd5',
+                            400: '#33bfc7',
+                            500: '#2A9CA6',
+                            600: '#228085',
+                            700: '#1a6064',
+                            800: '#114043',
+                            900: '#092021',
+                        },
+                        accent: {
+                            50: '#f8f3fb',
+                            100: '#f1e7f7',
+                            200: '#e3cfef',
+                            300: '#d5b7e7',
+                            400: '#c79fdf',
+                            500: '#AC76CB',
+                            600: '#8a5ea2',
+                            700: '#67477a',
+                            800: '#452f51',
+                            900: '#221829',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --accent-color: #AC76CB;
+        }
+
+        /* Coupon Card Effect */
+        .coupon-card {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .coupon-card:hover {
+            transform: translateY(-6px) scale(1.02);
+        }
+
+        .coupon-card::before,
+        .coupon-card::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: #f8fafc;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .coupon-card::before {
+            left: -12px;
+            box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .coupon-card::after {
+            right: -12px;
+            box-shadow: inset 2px 0 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Dashed separator */
+        .coupon-divider {
+            border-top: 2px dashed #e2e8f0;
+            margin: 1rem 0;
+        }
+
+        /* Price badge glow */
+        .price-glow {
+            text-shadow: 0 0 20px rgba(42, 156, 166, 0.3);
+        }
+
+        /* Shine effect on hover */
+        .coupon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .coupon-card:hover::before {
+            left: 100%;
+        }
+
+        /* Urgency badge pulse */
+        @keyframes pulse-badge {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .urgency-badge {
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-slate-800 bg-slate-50 selection:bg-brand-100 selection:text-brand-900">
+
+    <!-- Sticky Header -->
+    <header
+        class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all duration-300"
+        id="header">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="group">
+                <img src="assets/images/logo-orthods.png" alt="Logotipo Ortho DS" class="h-12 w-auto">
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                <a href="index.html#servicios" class="hover:text-brand-600 transition-colors">Tratamientos</a>
+                <a href="index.html#dra" class="hover:text-brand-600 transition-colors">Dra. Dalia</a>
+                <a href="casos.html" class="hover:text-brand-600 transition-colors">Casos de Éxito</a>
+                <a href="promociones.html" class="text-brand-600 font-semibold">Promociones</a>
+                <a href="index.html#ubicacion" class="hover:text-brand-600 transition-colors">Ubicación</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <a href="https://wa.me/5215660016169" target="_blank"
+                class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 bg-accent-500 rounded-full hover:bg-accent-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500">
+                Agendar Cita por WhatsApp
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <a href="https://wa.me/5215660016169" class="md:hidden text-brand-600 font-semibold text-sm">
+                Agendar
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+        class="relative pt-32 pb-16 overflow-hidden lg:pt-36 lg:pb-20 bg-gradient-to-br from-brand-600 via-brand-700 to-brand-900">
+        <!-- Decorative Elements -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-10 left-1/4 w-40 h-40 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-1/4 w-56 h-56 bg-pink-300 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 right-10 w-32 h-32 bg-yellow-300 rounded-full blur-2xl"></div>
+        </div>
+
+        <div class="container px-6 mx-auto relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-white uppercase bg-white/20 backdrop-blur rounded-full border border-white/30">
+                    <span class="urgency-badge w-2 h-2 rounded-full bg-green-400"></span>
+                    Ofertas por tiempo limitado
+                </span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4 leading-tight">
+                    Sonrisas al <span class="text-yellow-300">Mejor Precio</span>
+                </h1>
+                <p class="text-lg md:text-xl text-brand-100 leading-relaxed max-w-2xl mx-auto">
+                    Aprovecha nuestras promociones exclusivas y comienza tu tratamiento con descuentos especiales.
+                </p>
+            </div>
+        </div>
+
+        <!-- Wave Decoration -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+                <path
+                    d="M0 50L48 45.7C96 41.3 192 32.7 288 32.3C384 32 480 40 576 45.7C672 51.3 768 54.7 864 50C960 45.3 1056 32.7 1152 28.3C1248 24 1344 28 1392 30L1440 32V100H1392C1344 100 1248 100 1152 100C1056 100 960 100 864 100C768 100 672 100 576 100C480 100 384 100 288 100C192 100 96 100 48 100H0V50Z"
+                    fill="#f8fafc" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Promotions Grid Section -->
+    <section class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Promociones Vigentes</h2>
+                <p class="text-slate-500 text-lg">Selecciona tu cupón y contáctanos para reclamar tu oferta.</p>
+            </div>
+
+            <!-- Coupons Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+
+                <!-- Coupon 1: Limpieza 2x1 -->
+                <div
+                    class="coupon-card bg-white rounded-3xl shadow-lg border-2 border-dashed border-slate-200 p-6 overflow-hidden hover:border-brand-300 hover:shadow-xl">
+                    <!-- Badge -->
+                    <div class="flex justify-between items-start mb-4">
+                        <span
+                            class="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold text-white bg-gradient-to-r from-green-500 to-emerald-600 rounded-full shadow-sm">
+                            🔥 MÁS POPULAR
+                        </span>
+                        <span class="text-xs font-medium text-slate-400">Código: LIM2X1</span>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Limpieza Dental 2x1</h3>
+                    <p class="text-slate-500 text-sm mb-4">Al traer un acompañante, ambos reciben limpieza dental
+                        profesional.</p>
+
+                    <div class="coupon-divider"></div>
+
+                    <!-- Price Section -->
+                    <div class="text-center py-4">
+                        <p class="text-sm text-slate-400 line-through">$1,000 c/u</p>
+                        <p class="text-4xl font-bold text-brand-600 price-glow">$500 <span
+                                class="text-lg font-normal text-slate-500">c/u</span></p>
+                        <p class="text-xs text-green-600 font-semibold mt-1">¡Ahorras $500!</p>
+                    </div>
+
+                    <div class="coupon-divider"></div>
+
+                    <!-- Validity -->
+                    <div class="flex items-center justify-between text-xs text-slate-400 mb-4">
+                        <span>📅 Válido hasta: 28 Feb 2026</span>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <a href="https://wa.me/5215660016169?text=Hola,%20me%20interesa%20la%20promoción%20Limpieza%202x1%20(Código:%20LIM2X1)"
+                        target="_blank"
+                        class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-white bg-brand-600 rounded-xl hover:bg-brand-500 hover:shadow-lg transition-all duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        </svg>
+                        Reclamar Oferta en WhatsApp
+                    </a>
+                </div>
+
+                <!-- Coupon 2: Brackets Descuento -->
+                <div
+                    class="coupon-card bg-white rounded-3xl shadow-lg border-2 border-dashed border-slate-200 p-6 overflow-hidden hover:border-brand-300 hover:shadow-xl">
+                    <!-- Badge -->
+                    <div class="flex justify-between items-start mb-4">
+                        <span
+                            class="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold text-white bg-gradient-to-r from-brand-500 to-brand-700 rounded-full shadow-sm">
+                            ⭐ DESTACADO
+                        </span>
+                        <span class="text-xs font-medium text-slate-400">Código: BRK20</span>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">20% en Pago Inicial de Brackets</h3>
+                    <p class="text-slate-500 text-sm mb-4">Descuento aplicable en brackets metálicos o estéticos.</p>
+
+                    <div class="coupon-divider"></div>
+
+                    <!-- Price Section -->
+                    <div class="text-center py-4">
+                        <p class="text-sm text-slate-400 line-through">Desde $3,500</p>
+                        <p class="text-4xl font-bold text-brand-600 price-glow">Desde $2,800</p>
+                        <p class="text-xs text-green-600 font-semibold mt-1">¡20% de descuento!</p>
+                    </div>
+
+                    <div class="coupon-divider"></div>
+
+                    <!-- Validity -->
+                    <div class="flex items-center justify-between text-xs text-slate-400 mb-4">
+                        <span>📅 Válido hasta: 15 Mar 2026</span>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <a href="https://wa.me/5215660016169?text=Hola,%20me%20interesa%20la%20promoción%20de%20Brackets%20con%2020%%20de%20descuento%20(Código:%20BRK20)"
+                        target="_blank"
+                        class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-white bg-brand-600 rounded-xl hover:bg-brand-500 hover:shadow-lg transition-all duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        </svg>
+                        Reclamar Oferta en WhatsApp
+                    </a>
+                </div>
+
+                <!-- Coupon 3: Blanqueamiento -->
+                <div
+                    class="coupon-card bg-white rounded-3xl shadow-lg border-2 border-dashed border-slate-200 p-6 overflow-hidden hover:border-brand-300 hover:shadow-xl">
+                    <!-- Badge -->
+                    <div class="flex justify-between items-start mb-4">
+                        <span
+                            class="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold text-white bg-gradient-to-r from-pink-500 to-rose-600 rounded-full shadow-sm">
+                            ✨ ESTÉTICA
+                        </span>
+                        <span class="text-xs font-medium text-slate-400">Código: BLQ15</span>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Blanqueamiento con 15% OFF</h3>
+                    <p class="text-slate-500 text-sm mb-4">Blanqueamiento dental profesional con luz LED.</p>
+
+                    <div class="coupon-divider"></div>
+
+                    <!-- Price Section -->
+                    <div class="text-center py-4">
+                        <p class="text-sm text-slate-400 line-through">$3,000</p>
+                        <p class="text-4xl font-bold text-brand-600 price-glow">$2,550</p>
+                        <p class="text-xs text-green-600 font-semibold mt-1">¡Ahorras $450!</p>
+                    </div>
+
+                    <div class="coupon-divider"></div>
+
+                    <!-- Validity -->
+                    <div class="flex items-center justify-between text-xs text-slate-400 mb-4">
+                        <span>📅 Válido hasta: 14 Feb 2026</span>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <a href="https://wa.me/5215660016169?text=Hola,%20me%20interesa%20la%20promoción%20de%20Blanqueamiento%20con%2015%%20OFF%20(Código:%20BLQ15)"
+                        target="_blank"
+                        class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-white bg-brand-600 rounded-xl hover:bg-brand-500 hover:shadow-lg transition-all duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        </svg>
+                        Reclamar Oferta en WhatsApp
+                    </a>
+                </div>
+
+                <!-- Coupon 4: Consulta Gratis -->
+                <div
+                    class="coupon-card bg-white rounded-3xl shadow-lg border-2 border-dashed border-slate-200 p-6 overflow-hidden hover:border-brand-300 hover:shadow-xl">
+                    <!-- Badge -->
+                    <div class="flex justify-between items-start mb-4">
+                        <span
+                            class="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold text-white bg-gradient-to-r from-amber-500 to-orange-600 rounded-full shadow-sm">
+                            🎁 NUEVO PACIENTE
+                        </span>
+                        <span class="text-xs font-medium text-slate-400">Código: NUEVO</span>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Valoración Inicial GRATIS</h3>
+                    <p class="text-slate-500 text-sm mb-4">Primera consulta sin costo al mencionar esta promoción.</p>
+
+                    <div class="coupon-divider"></div>
+
+                    <!-- Price Section -->
+                    <div class="text-center py-4">
+                        <p class="text-sm text-slate-400 line-through">$500</p>
+                        <p class="text-4xl font-bold text-green-600 price-glow">GRATIS</p>
+                        <p class="text-xs text-green-600 font-semibold mt-1">¡100% de descuento!</p>
+                    </div>
+
+                    <div class="coupon-divider"></div>
+
+                    <!-- Validity -->
+                    <div class="flex items-center justify-between text-xs text-slate-400 mb-4">
+                        <span>📅 Válido hasta: 31 Mar 2026</span>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <a href="https://wa.me/5215660016169?text=Hola,%20me%20interesa%20la%20Valoración%20Inicial%20GRATIS%20(Código:%20NUEVO)"
+                        target="_blank"
+                        class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-white bg-brand-600 rounded-xl hover:bg-brand-500 hover:shadow-lg transition-all duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        </svg>
+                        Reclamar Oferta en WhatsApp
+                    </a>
+                </div>
+
+                <!-- Coupon 5: Paquete Familiar -->
+                <div
+                    class="coupon-card bg-white rounded-3xl shadow-lg border-2 border-dashed border-slate-200 p-6 overflow-hidden hover:border-brand-300 hover:shadow-xl">
+                    <!-- Badge -->
+                    <div class="flex justify-between items-start mb-4">
+                        <span
+                            class="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold text-white bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full shadow-sm">
+                            👨‍👩‍👧‍👦 FAMILIAR
+                        </span>
+                        <span class="text-xs font-medium text-slate-400">Código: FAM25</span>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">25% OFF Tratamiento Familiar</h3>
+                    <p class="text-slate-500 text-sm mb-4">Descuento en ortodoncia para 2 o más familiares.</p>
+
+                    <div class="coupon-divider"></div>
+
+                    <!-- Price Section -->
+                    <div class="text-center py-4">
+                        <p class="text-sm text-slate-400">Aplica en pago inicial</p>
+                        <p class="text-4xl font-bold text-brand-600 price-glow">-25%</p>
+                        <p class="text-xs text-green-600 font-semibold mt-1">¡Por cada familiar!</p>
+                    </div>
+
+                    <div class="coupon-divider"></div>
+
+                    <!-- Validity -->
+                    <div class="flex items-center justify-between text-xs text-slate-400 mb-4">
+                        <span>📅 Válido hasta: 30 Abr 2026</span>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <a href="https://wa.me/5215660016169?text=Hola,%20me%20interesa%20el%20descuento%20de%2025%%20en%20Tratamiento%20Familiar%20(Código:%20FAM25)"
+                        target="_blank"
+                        class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-white bg-brand-600 rounded-xl hover:bg-brand-500 hover:shadow-lg transition-all duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        </svg>
+                        Reclamar Oferta en WhatsApp
+                    </a>
+                </div>
+
+                <!-- Coupon 6: Retenedores -->
+                <div
+                    class="coupon-card bg-white rounded-3xl shadow-lg border-2 border-dashed border-slate-200 p-6 overflow-hidden hover:border-brand-300 hover:shadow-xl">
+                    <!-- Badge -->
+                    <div class="flex justify-between items-start mb-4">
+                        <span
+                            class="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold text-white bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full shadow-sm">
+                            🦷 POST-ORTODONCIA
+                        </span>
+                        <span class="text-xs font-medium text-slate-400">Código: RET10</span>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Retenedores con 10% OFF</h3>
+                    <p class="text-slate-500 text-sm mb-4">Descuento en retenedores para pacientes activos.</p>
+
+                    <div class="coupon-divider"></div>
+
+                    <!-- Price Section -->
+                    <div class="text-center py-4">
+                        <p class="text-sm text-slate-400 line-through">$3,000</p>
+                        <p class="text-4xl font-bold text-brand-600 price-glow">$2,700</p>
+                        <p class="text-xs text-green-600 font-semibold mt-1">¡Ahorras $300!</p>
+                    </div>
+
+                    <div class="coupon-divider"></div>
+
+                    <!-- Validity -->
+                    <div class="flex items-center justify-between text-xs text-slate-400 mb-4">
+                        <span>📅 Válido hasta: 28 Feb 2026</span>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <a href="https://wa.me/5215660016169?text=Hola,%20me%20interesa%20la%20promoción%20de%20Retenedores%20con%2010%%20OFF%20(Código:%20RET10)"
+                        target="_blank"
+                        class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-white bg-brand-600 rounded-xl hover:bg-brand-500 hover:shadow-lg transition-all duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        </svg>
+                        Reclamar Oferta en WhatsApp
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms and Conditions Section -->
+    <section class="py-12 bg-white border-t border-slate-100">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Términos y Condiciones
+                </h3>
+                <div class="text-xs text-slate-400 space-y-2 leading-relaxed">
+                    <p>• Las promociones son válidas únicamente durante el periodo de vigencia indicado en cada cupón.
+                    </p>
+                    <p>• Los descuentos no son acumulables con otras promociones u ofertas vigentes.</p>
+                    <p>• Precios sujetos a valoración previa por parte de la Dra. Dalia.</p>
+                    <p>• Es necesario mencionar el código de la promoción al agendar tu cita para que el descuento sea
+                        aplicado.</p>
+                    <p>• Ortho DS se reserva el derecho de modificar o cancelar las promociones sin previo aviso.</p>
+                    <p>• Para más información sobre las condiciones específicas de cada promoción, contáctanos por
+                        WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <a href="index.html" class="text-2xl font-bold tracking-tight text-white">
+                    Ortho <span class="text-brand-500">DS</span>
+                </a>
+                <div class="text-sm text-slate-500">
+                    &copy; 2024 Ortho DS. Todos los derechos reservados.
+                </div>
+                <div class="flex gap-6 text-sm font-medium">
+                    <a href="index.html" class="hover:text-white transition-colors">Inicio</a>
+                    <a href="index.html#servicios" class="hover:text-white transition-colors">Servicios</a>
+                    <a href="casos.html" class="hover:text-white transition-colors">Casos de Éxito</a>
+                    <a href="promociones.html" class="text-brand-400 hover:text-white transition-colors">Promociones</a>
+                    <a href="index.html#ubicacion" class="hover:text-white transition-colors">Ubicación</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5215660016169" target="_blank"
+        class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 hover:rotate-3 transition-all duration-300 flex items-center justify-center group">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-4.821 4.991c-1.597 0-3.158-.43-4.526-1.241l-.325-.193-3.368.884.898-3.287-.213-.339c-.892-1.418-1.363-3.064-1.363-4.757 0-4.928 4.01-8.938 8.941-8.938 2.388 0 4.634.931 6.324 2.622 1.691 1.691 2.621 3.936 2.621 6.324 0 4.931-4.01 8.941-8.942 8.941z" />
+        </svg>
+        <span
+            class="absolute right-full mr-4 bg-white/90 backdrop-blur text-slate-700 px-3 py-1 rounded-lg text-sm font-medium shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap hidden md:block">
+            ¡Escríbenos!
+        </span>
+    </a>
+
+    <!-- Scroll Header Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    header.classList.add('shadow-md');
+                } else {
+                    header.classList.remove('shadow-md');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
